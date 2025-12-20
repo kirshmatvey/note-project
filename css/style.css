@@ -1,0 +1,267 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1150px;
+    margin: 0 auto;
+}
+
+/* Header Styles */
+.header {
+    box-shadow: 0 1px 3px 0 rgba(11, 12, 13, 0.16), 0 0 1px 0 rgba(11, 12, 13, 0.24);
+    background: #fff;
+}
+
+.header-wrapper {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.note-counter-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.note-counter {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    text-align: right;
+    color: #000;
+}
+
+/* Hero Section Styles */
+.hero-wrapper {
+    padding: 25px 0 0;
+}
+
+.note-input-block {
+    border-radius: 4px;
+    padding: 24px;
+    box-shadow: 0 8px 12px 0 rgba(11, 12, 13, 0.08), 0 16px 24px 0 rgba(11, 12, 13, 0.04), 0 1px 2px 0 rgba(11, 12, 13, 0.08);
+    background: #fff;
+    margin-bottom: 60px;
+}
+
+.note-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#note-title {
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    padding: 6px 12px;
+    width: 344px;
+    height: 36px;
+}
+
+#note-title::placeholder, #note-description::placeholder {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 171%;
+    color: #919191;
+}
+
+.title-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.description-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.color-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#note-description {
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    padding: 6px 12px;
+    width: 848px;
+    height: 84px;
+    resize: none;
+}
+
+.description-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    font-size: 12px;
+    line-height: 200%;
+    color: #919191;
+}
+
+/* ------------ Color buttons ------------ */
+
+fieldset {
+    all: unset;
+}
+
+legend {
+    all: unset
+}
+
+.radio-list {
+    display: flex;
+    gap: 14px;
+    list-style: none;
+    padding-left: 0;
+}
+
+
+.radio {
+    appearance: none;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: green;
+}
+
+.radio[value="red"] {
+    background-color: #F37D7D;
+}
+
+.radio[value="green"] {
+    background-color: #C2F37D;
+}
+
+.radio[value="blue"] {
+    background-color: #7DE1F3;
+}
+
+.radio[value="yellow"] {
+    background-color: #F3DB7D;
+}
+
+.radio[value="purple"] {
+    background-color: #E77DF3;
+}
+
+.radio:checked {
+    border-color: white;
+    box-shadow: 0 0 0 3px white, /* Внутренняя обводка для создания промежутка */
+    0 0 0 5px #007BFF; /* Внешняя обводка */
+}
+
+/* -------------------------------- */
+
+.create-note-button {
+    border: none;
+    border-radius: 10px;
+    width: 232px;
+    height: 36px;
+    background: #457cdc;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.no-note-message {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    text-align: center;
+    color: #000;
+}
+
+/* Style for notes */
+.note-container {
+    display: flex;
+    gap: 23px;
+    flex-wrap: wrap;
+}
+
+.note {
+    max-width: 368px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(11, 12, 13, 0.08), 0 8px 16px 0 rgba(11, 12, 13, 0.04), 0 1px 2px 0 rgba(11, 12, 13, 0.08);
+    background: #fff;
+}
+
+.note-header {
+    padding: 12px;
+    border-radius: 10px 10px 0 0;
+}
+
+.note-header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.note-title {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: #292515;
+}
+
+.note-info {
+    font-size: 14px;
+    line-height: 171%;
+    color: #000;
+}
+
+.note-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+#heart, #trash {
+    width: 16px;
+    height: 16px;
+}
+
+.note-content {
+    padding: 12px;
+}
+
+/*Classes for colors*/
+
+.green {
+    background: #C2F37D;
+}
+
+.blue {
+    background: #7DE1F3;
+}
+
+.red {
+    background: #F37D7D;
+}
+
+.yellow {
+    background: #F3DB7D;
+}
+
+.purple {
+    background: #E77DF3;
+}
+
+
+
+
+

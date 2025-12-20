@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Notes</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font/fonts.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-wrapper">
+                <img src="./images/Notes-logo.svg" alt="logo">
+                <div class="note-counter-wrapper">
+                    <img src="./images/icons/notes.svg" alt="note-image">
+                    <!-- Note counter -->
+                    <span class="note-counter"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <div class="hero-wrapper">
+                <div class="note-input-block">
+                    <form class="note-form">
+                        <div class="title-input">
+                            <label class="label" for="note-title">Название заметки</label>
+                            <input id="note-title" type="text" placeholder="Напишите название новой заметки...">
+                        </div>
+
+                        <div class="description-wrapper">
+                            <div class="description-input">
+                                <label class="label" for="note-description">Описание новой заметки</label>
+                                <textarea id="note-description" placeholder="Напишите описание новой заметки..."></textarea>
+                            </div>
+
+                            <div class="color-wrapper">
+                                <fieldset class="fieldset">
+                                    <legend class="label">Выберите цвет заметки</legend>
+                                    <ul class="radio-list">
+                                        <li>
+                                            <input checked class="radio" type="radio" name="color" value="yellow" aria-label="yellow" />
+                                        </li>
+                                        <li>
+                                            <input class="radio" type="radio" name="color" value="green" aria-label="green" />
+                                        </li>
+                                        <li>
+                                            <input class="radio" type="radio" name="color" value="blue" aria-label="blue" />
+                                        </li>
+                                        <li>
+                                            <input class="radio" type="radio" name="color" value="red" aria-label="red" />
+                                        </li>
+                                        <li>
+                                            <input class="radio" type="radio" name="color" value="purple" aria-label="purple" />
+                                        </li>
+                                    </ul>
+                                </fieldset>
+
+                                <button class='create-note-button' type="submit"><img src="./images/icons/plus-svgrepo-com%201.svg" alt="plus"> Добавить заметку</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="note-container">
+                <article class="note">
+                    <header class="note-header">
+                        <div class="note-header-wrapper">
+                            <h2 class="note-title">${data.title}</h2>
+                            <div class="note-buttons">
+                                <img id="heart" src="./images/icons/heart%20inactive.svg" alt="is-favorite">
+                                <img id="trash" src="./images/icons/trash.svg" alt="delete">
+                            </div>
+                        </div>
+                    </header>
+                    <div class="note-content">
+                        <p class="note-info">${data.content}</p>
+                    </div>
+                </article>
+                <!-- Message when there are no notes -->
+                <p class="no-note-message">У вас нет еще ни одной заметки <br>Заполните поля выше и создайте свою первую заметку!</p>
+            </div>
+        </div>
+
+        <div class="message-box"></div>
+    </section>
+    <script src="./js/main.js"></script>
+</body>
+</html>
