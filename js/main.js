@@ -39,6 +39,7 @@ const MOCK_NOTES = [
 ]
 
 const model = {
+    success: true,
     notes: MOCK_NOTES,
 
     addNote(title, content, color) {
@@ -59,6 +60,8 @@ const model = {
         noteDescription.value = ''
 
         view.render(this.notes)
+
+        this.showMessage('Заметка добавлена!')
     },
 
     removeNote(id) {
@@ -85,6 +88,31 @@ const model = {
         const favoriteList = this.notes.filter((note) => note.isFavorite)
 
         view.render(favoriteList)
+    },
+
+    showMessage(message) {
+        const messageBox = document.querySelector('.message-box')
+        const messageContent = document.querySelector('#message-content')
+        const messageSign = document.querySelector('#message-sign')
+
+        if (this.success) {
+            messageSign.setAttribute('src', './images/icons/Done.svg')
+            messageBox.classList.add('success')
+        } else {
+            messageSign.setAttribute('src', './images/icons/warning.svg')
+            messageBox.classList.add('error')
+        }
+
+        messageContent.textContent = message
+        messageBox.classList.toggle('pop-up')
+        setTimeout(() => {
+            messageBox.classList.toggle('pop-up')
+            setTimeout(() => {
+                messageBox.classList.remove('error')
+                messageBox.classList.remove('success')
+            }, 600)
+        }, 2000)
+
     }
 }
 
@@ -213,11 +241,11 @@ const view = {
 
 const controller = {
     addNote(title, content, color) {
-        if (title === '' || content === '') {
-            // messageBox.classList.toggle('pop-up')
-        } else if (title.length > 50) {
-            // messageBox.classList.toggle('pop-up')
+        if (title.length > 50) {
+            model.success = false
+            model.showMessage('Максимальная длина заголовка - 50 символов')
         } else {
+            model.success = true
             model.addNote(title, content, color)
         }
     },

@@ -9,7 +9,7 @@
     margin: 0 auto;
 }
 
-/* Header Styles */
+/* --------------- Header Styles --------------- */
 .header {
     box-shadow: 0 1px 3px 0 rgba(11, 12, 13, 0.16), 0 0 1px 0 rgba(11, 12, 13, 0.24);
     background: #fff;
@@ -36,9 +36,9 @@
     color: #000;
 }
 
-/* Hero Section Styles */
-.hero-wrapper {
-    padding: 25px 0 0;
+/* --------------- Hero Section Styles --------------- */
+.note-section {
+    padding: 25px 0;
 }
 
 .note-input-block {
@@ -177,7 +177,7 @@ legend {
     gap: 8px;
 }
 
-/* Style for notes */
+/* --------------- Style for notes --------------- */
 .note-container {
     display: flex;
     flex-direction: column;
@@ -269,7 +269,7 @@ legend {
     padding: 12px;
 }
 
-/*Classes for colors*/
+/* --------------- Classes for colors --------------- */
 
 .green {
     background: #C2F37D;
@@ -290,6 +290,43 @@ legend {
 .purple {
     background: #E77DF3;
 }
+
+/* --------------- MessageBox Styles --------------- */
+
+.message-box {
+    z-index: 100;
+    position: fixed;
+    bottom: -100%;
+    right: 65px;
+    border-radius: 10px;
+    padding: 12px 24px;
+    box-shadow: 0 8px 12px 0 rgba(11, 12, 13, 0.08), 0 16px 24px 0 rgba(11, 12, 13, 0.04), 0 1px 2px 0 rgba(11, 12, 13, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: 0.5s ease-in-out;
+}
+
+#message-content {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 171%;
+}
+
+.pop-up {
+    bottom: 70px;
+}
+
+.error {
+    background: #f23d5b;
+}
+
+.success {
+    background: #47b27d;
+}
+
+
 
 
 

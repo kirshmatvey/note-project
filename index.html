@@ -24,20 +24,20 @@
         </div>
     </header>
 
-    <section>
+    <section class="note-section">
         <div class="container">
             <div class="hero-wrapper">
                 <div class="note-input-block">
                     <form class="note-form">
                         <div class="title-input">
                             <label class="label" for="note-title">Название заметки</label>
-                            <input id="note-title" type="text" placeholder="Напишите название новой заметки...">
+                            <input id="note-title" type="text" placeholder="Напишите название новой заметки..." required>
                         </div>
 
                         <div class="description-wrapper">
                             <div class="description-input">
                                 <label class="label" for="note-description">Описание новой заметки</label>
-                                <textarea id="note-description" placeholder="Напишите описание новой заметки..."></textarea>
+                                <textarea id="note-description" placeholder="Напишите описание новой заметки..." required></textarea>
                             </div>
 
                             <div class="color-wrapper">
@@ -68,12 +68,13 @@
                     </form>
                 </div>
             </div>
-            <div class="note-container">
-
-            </div>
+            <!-- Container For Notes -->
+            <div class="note-container"></div>
         </div>
-
-        <div class="message-box"></div>
+        <!-- Message Box -->
+        <div class="message-box">
+            <img id="message-sign" src="" alt="sign"><span id="message-content"></span>
+        </div>
     </section>
     <script src="./js/main.js"></script>
 </body>
