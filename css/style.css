@@ -46,7 +46,6 @@
     padding: 24px;
     box-shadow: 0 8px 12px 0 rgba(11, 12, 13, 0.08), 0 16px 24px 0 rgba(11, 12, 13, 0.04), 0 1px 2px 0 rgba(11, 12, 13, 0.08);
     background: #fff;
-    margin-bottom: 60px;
 }
 
 .note-form {
@@ -178,7 +177,16 @@ legend {
     gap: 8px;
 }
 
+/* Style for notes */
+.note-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 25px;
+}
+
 .no-note-message {
+    margin-top: 115px;
     font-weight: 500;
     font-size: 16px;
     line-height: 150%;
@@ -186,8 +194,26 @@ legend {
     color: #000;
 }
 
-/* Style for notes */
-.note-container {
+.show-favorite {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    align-self: flex-end;
+}
+
+.favorite-checkbox {
+    width: 16px;
+    height: 16px;
+}
+
+.favorite-span {
+    font-size: 12px;
+    line-height: 200%;
+    color: #000;
+}
+
+.note-container-wrapper {
     display: flex;
     gap: 23px;
     flex-wrap: wrap;
@@ -217,17 +243,21 @@ legend {
     font-size: 16px;
     line-height: 150%;
     color: #292515;
+    display: block;
+    max-width: 290px;
+    overflow-wrap: break-word;
+}
+
+.note-buttons {
+    display: flex;
+    gap: 10px;
 }
 
 .note-info {
     font-size: 14px;
     line-height: 171%;
     color: #000;
-}
-
-.note-buttons {
-    display: flex;
-    gap: 10px;
+    overflow-wrap: break-word;
 }
 
 #heart, #trash {
