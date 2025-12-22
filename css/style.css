@@ -293,9 +293,20 @@ legend {
 
 /* --------------- MessageBox Styles --------------- */
 
+#message-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    position: fixed;
+    bottom: 70px;
+    right: 65px;
+
+}
+
 .message-box {
     z-index: 100;
-    position: fixed;
+    position: relative;
     bottom: -100%;
     right: 65px;
     border-radius: 10px;
@@ -305,7 +316,6 @@ legend {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    transition: 0.5s ease-in-out;
 }
 
 #message-content {
@@ -314,8 +324,35 @@ legend {
     line-height: 171%;
 }
 
+/* --------------- Animation --------------- */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Start from 0% opacity */
+    }
+    to {
+        opacity: 1; /* End at 100% opacity */
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1; /* Start from 0% opacity */
+    }
+    to {
+        opacity: 0; /* End at 100% opacity */
+    }
+}
+
 .pop-up {
-    bottom: 70px;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards; /* Ensures the element stays visible after the animation finishes */
+}
+
+.hide {
+    animation: fadeOut 0.4s ease-out;
+    animation-fill-mode: forwards;
 }
 
 .error {

@@ -39,7 +39,8 @@ const MOCK_NOTES = [
 ]
 
 const model = {
-    success: true,
+    status: true,
+    messages: [],
     notes: MOCK_NOTES,
 
     addNote(title, content, color) {
@@ -91,32 +92,32 @@ const model = {
     },
 
     showMessage(message) {
-        const messageBox = document.querySelector('.message-box')
-        const messageContent = document.querySelector('#message-content')
-        const messageSign = document.querySelector('#message-sign')
+        let messageSign = ''
+        let status = ''
 
-        if (this.success) {
-            messageSign.setAttribute('src', './images/icons/Done.svg')
-            messageBox.classList.add('success')
+        if (this.status) {
+            messageSign = './images/icons/Done.svg'
+            status = 'success'
         } else {
-            messageSign.setAttribute('src', './images/icons/warning.svg')
-            messageBox.classList.add('error')
+            messageSign = './images/icons/warning.svg'
+            status = 'error'
         }
 
-        messageContent.textContent = message
-        messageBox.classList.toggle('pop-up')
-        setTimeout(() => {
-            messageBox.classList.toggle('pop-up')
-            setTimeout(() => {
-                messageBox.classList.remove('error')
-                messageBox.classList.remove('success')
-            }, 600)
-        }, 2000)
+        const m = {
+            id: new Date().getTime(),
+            status: status,
+            content: message,
+            sign: messageSign,
+        }
 
+        this.messages.push(m)
+
+        view.renderMessageBox(m)
     }
 }
 
 const view = {
+    ifExists: false,
     showFavorite: false,
     render(data) {
         const noteContainer = document.querySelector('.note-container')
@@ -180,8 +181,6 @@ const view = {
                 `
             })
 
-
-
             noteContainer.append(showFavorite)
             noteContainer.append(noteContainerWrapper)
         }
@@ -235,17 +234,51 @@ const view = {
 
             }
         })
-    }
+    },
+
+    renderMessageBox(data) {
+        const messageBox = document.querySelector('#message-box')
+
+        messageBox.innerHTML += `
+        <div id='${data.id}' class="message-box pop-up ${data.status}">
+        <img id="message-sign" src="${data.sign}" alt="sign"><span id="message-content">${data.content}</span>
+        </div>
+        `
+
+        this.removeMessage(model.messages)
+    },
+
+    removeMessage(data) {
+        data.forEach((item) => {
+            setTimeout(() => {
+                const message = document.getElementById(`${item.id}`)
+
+                if (!message) return;
+
+                message.classList.remove('pop-up')
+                message.classList.add('hide')
+
+                message.addEventListener('animationend', () => {
+                    message.remove();
+                    model.messages.splice(data.indexOf(item), 1)
+                }, { once: true });
+
+            }, 2000)
+        })
+    },
+
+
+
 
 }
 
 const controller = {
     addNote(title, content, color) {
         if (title.length > 50) {
-            model.success = false
+            model.status = false
             model.showMessage('Максимальная длина заголовка - 50 символов')
         } else {
-            model.success = true
+            model.status = true
             model.addNote(title, content, color)
         }
     },
