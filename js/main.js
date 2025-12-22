@@ -6,42 +6,11 @@ const colors = {
     PURPLE: 'purple',
 }
 
-const MOCK_NOTES = [
-    {
-        id: 1,
-        title: 'Работа с формами',
-        content: 'К определённым полям формы можно обратиться через form.elements по значению, указанному в атрибуте name',
-        color: colors.GREEN,
-        isFavorite: true,
-    },
-    // ...
-    {
-        id: 2,
-        title: 'Работа с формами',
-        content: 'К определённым полям формы можно обратиться через form.elements по значению, указанному в атрибуте name',
-        color: colors.RED,
-        isFavorite: false,
-    },
-    {
-        id: 3,
-        title: 'Работа с формами',
-        content: 'К определённым полям формы можно обратиться через form.elements по значению, указанному в атрибуте name',
-        color: colors.BLUE,
-        isFavorite: false,
-    },
-    {
-        id: 4,
-        title: 'Работа с формами',
-        content: 'К определённым полям формы можно обратиться через form.elements по значению, указанному в атрибуте name',
-        color: colors.BLUE,
-        isFavorite: true,
-    },
-]
-
 const model = {
+    counter: 0,
     status: true,
     messages: [],
-    notes: MOCK_NOTES,
+    notes: [],
 
     addNote(title, content, color) {
         const noteTitle = document.querySelector('#note-title')
@@ -60,7 +29,11 @@ const model = {
         noteTitle.value = ''
         noteDescription.value = ''
 
-        view.render(this.notes)
+        if (view.showFavorite) {
+            this.showFavorite()
+        } else {
+            view.render(this.notes)
+        }
 
         this.showMessage('Заметка добавлена!')
     },
@@ -103,8 +76,10 @@ const model = {
             status = 'error'
         }
 
+        this.counter++
+
         const m = {
-            id: new Date().getTime(),
+            id: this.counter,
             status: status,
             content: message,
             sign: messageSign,
@@ -261,14 +236,10 @@ const view = {
                 setTimeout(() => {
                     message.remove()
                     model.messages.splice(data.indexOf(item), 1)
-                }, 400)
+                }, 200)
             }, 1500)
         })
     },
-
-
-
-
 }
 
 const controller = {
