@@ -117,7 +117,6 @@ const model = {
 }
 
 const view = {
-    ifExists: false,
     showFavorite: false,
     render(data) {
         const noteContainer = document.querySelector('.note-container')
@@ -258,12 +257,12 @@ const view = {
                 message.classList.remove('pop-up')
                 message.classList.add('hide')
 
-                message.addEventListener('animationend', () => {
-                    message.remove();
-                    model.messages.splice(data.indexOf(item), 1)
-                }, { once: true });
 
-            }, 2000)
+                setTimeout(() => {
+                    message.remove()
+                    model.messages.splice(data.indexOf(item), 1)
+                }, 400)
+            }, 1500)
         })
     },
 
