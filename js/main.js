@@ -214,7 +214,7 @@ const view = {
         const messageBox = document.querySelector('#message-box')
 
         messageBox.innerHTML += `
-        <div id='${data.id}' class="message-box pop-up ${data.status}">
+        <div id='${data.id}' class="message-box ${data.status}">
         <img id="message-sign" src="${data.sign}" alt="sign"><span id="message-content">${data.content}</span>
         </div>
         `
@@ -237,7 +237,7 @@ const view = {
                     message.remove()
                     model.messages.splice(data.indexOf(item), 1)
                 }, 200)
-            }, 1500)
+            }, 2000)
         })
     },
 }
