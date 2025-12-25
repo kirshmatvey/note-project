@@ -237,14 +237,17 @@ const view = {
                     message.remove()
                     model.messages.splice(data.indexOf(item), 1)
                 }, 200)
-            }, 2000)
+            }, 3000)
         })
     },
 }
 
 const controller = {
     addNote(title, content, color) {
-        if (title.length > 50) {
+        if (title.trim() === '' || content.trim() === '') {
+            model.status = false
+            model.showMessage('Заполните все поля')
+        } else if (title.length > 50) {
             model.status = false
             model.showMessage('Максимальная длина заголовка - 50 символов')
         } else {
