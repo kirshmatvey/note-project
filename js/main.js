@@ -6,7 +6,7 @@ const colors = {
     PURPLE: 'purple',
 }
 
-const myStorage = window.localStorage
+const STORAGE_KEY = 'storage'
 
 const model = {
     counter: 0,
@@ -27,7 +27,7 @@ const model = {
         }
 
         this.notes.unshift(newNote)
-        myStorage.storage = JSON.stringify(this.notes)
+        saveToLocalStorage()
 
         noteTitle.value = ''
         noteDescription.value = ''
@@ -43,7 +43,7 @@ const model = {
 
     removeNote(id) {
         this.notes = this.notes.filter((note) => note.id !== id)
-        myStorage.storage = JSON.stringify(this.notes)
+        saveToLocalStorage()
 
         if (view.showFavorite) {
             this.showFavorite()
@@ -54,7 +54,7 @@ const model = {
 
     updateNote(id) {
         this.notes = this.notes.map((note) => note.id === id ? { ...note, isFavorite: !note.isFavorite } : note)
-        myStorage.storage = JSON.stringify(this.notes)
+        saveToLocalStorage()
 
         if (view.showFavorite) {
             this.showFavorite()
@@ -276,12 +276,18 @@ const controller = {
 }
 
 function init() {
-    if (myStorage.getItem('storage') == null || myStorage.storage == false) {
-        myStorage.storage = model.notes
-    } else {
-        model.notes = JSON.parse(myStorage.storage)
-    }
-
+    loadFromLocalStorage()
     view.init()
 }
 init()
+
+function saveToLocalStorage() {
+    localStorage.setItem(STORAGE_KEY , JSON.stringify(model.notes))
+}
+
+function loadFromLocalStorage() {
+    const data = localStorage.getItem(STORAGE_KEY)
+    if (data) {
+        model.notes = JSON.parse(data)
+    }
+}
